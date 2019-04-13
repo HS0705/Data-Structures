@@ -69,11 +69,32 @@ def sort_by_cohort(filename):
     summer_16 = []
     fall_15 = []
     ghosts = []
+    all_students_ghosts=[]
 
     # Code goes here
+    filename = open("cohort_data.txt")
+    for data in filename:
+        data = data.rstrip()
+        data = data.split('|')
+        if (data[4] == 'Fall 2015' or data[4] == 'Spring 2016' 
+            or data[4] == 'Summer 2016' or data[4] == 'Winter 2016'):
+            all_students.append(data[0] +  ' ' + data[1]) 
+        if data[4] == 'Fall 2015':
+            fall_15.append(data[0] + ' '+ data[1])
+        if data[4] == 'Spring 2016':
+            spring_16.append(data[0] + ' '+ data[1])
+        if data[4] == 'Summer 2016':
+            summer_16.append(data[0] + ' '+ data[1])
+        if data[4] == 'Winter 2016':
+            winter_16.append(data[0] + ' '+ data[1])
+        if data[4] == 'G':
+            ghosts.append(data[0] + ' '+ data[1])
+        if data[4] != 'I':
+            all_students_ghosts.append(data[0] + ' '+ data[1])
 
-    return all_students
 
+    return all_students_ghosts
+sort_by_cohort(filename)
 
 def hogwarts_by_house(filename):
     """TODO: Sort students into lists by house and return all lists in one list.
